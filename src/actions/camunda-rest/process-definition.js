@@ -21,11 +21,19 @@ export const fetchProcessDefinitions = (processDefinitionId) => {
   }
 }
 
-export const fetchFormKey = (processDefinitionKey) => ({
+export const fetchFormKey = (processDefinitionKey,values) => ({
   [CALL_API]: {
     types: [ AT.FORM_KEY_REQUEST, AT.FORM_KEY_SUCCESS, AT.FORM_KEY_FAILURE ],
     endpoint: `process-definition/key/${processDefinitionKey}/startForm`,
-    schema: Schemas.FORM_KEY
+    schema: Schemas.FORM_KEY,
+    settings: {
+      method: 'get',
+      body: JSON.stringify(values),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }
   }
 })
 
