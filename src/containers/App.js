@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import { Container, Header } from 'semantic-ui-react'
 import DeployProcess from '../components/DeployProcess'
 import './index.css'
+import logo from './image/logo.png'
 
 const App = ({actions, children}) => (
   <div className='main'>
-    <Container text className='sub-main'>
+    <Container text className='sub-main border border-dark'>
+      <img src={logo} width={50} height={50}/>
       <Header as='h2' className='fsc-5 text-success'>LandAllotment Process</Header>
       <form className='form-floating'>
           <h4 className='text-danger mb-3'>Thanks for choosing our portal for acquiring land</h4>
