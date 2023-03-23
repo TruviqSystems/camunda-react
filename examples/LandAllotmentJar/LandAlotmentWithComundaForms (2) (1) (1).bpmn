@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_156s4xd" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:process id="LandAllotment_camunda" name="LandAllotment_camunda-EXPPP" isExecutable="true">
+    <bpmn:sequenceFlow id="Flow_11o7es6" sourceRef="Gateway_1o3ypmt" targetRef="FinananceDepartment" />
+    <bpmn:sequenceFlow id="Flow_0ux58mj" sourceRef="Gateway_1o3ypmt" targetRef="TaxDepartment" />
+    <bpmn:sequenceFlow id="Flow_1p0uy0r" sourceRef="Gateway_1o3ypmt" targetRef="LandRecordsWing" />
+    <bpmn:sequenceFlow id="Flow_1srf8k8" sourceRef="FinananceDepartment" targetRef="Gateway_11wabuf" />
+    <bpmn:sequenceFlow id="Flow_1ib2z36" sourceRef="LandRecordsWing" targetRef="Gateway_11wabuf" />
+    <bpmn:sequenceFlow id="Flow_14j0vsj" sourceRef="TaxDepartment" targetRef="Gateway_11wabuf" />
+    <bpmn:sequenceFlow id="Flow_0sl48us" sourceRef="Gateway_11wabuf" targetRef="APIIC" />
+    <bpmn:userTask id="FinananceDepartment" name="FinanceDepartment " camunda:formRef="FinanceDepartmentForm" camunda:formRefBinding="deployment" camunda:assignee="FinanceDepartment">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_11o7es6</bpmn:incoming>
+      <bpmn:outgoing>Flow_1srf8k8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="TaxDepartment" name="Tax Department" camunda:formRef="TaxDepartment" camunda:formRefBinding="deployment" camunda:assignee="TaxDepartment">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_0ux58mj</bpmn:incoming>
+      <bpmn:outgoing>Flow_14j0vsj</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="LandRecordsWing" name="LandRecordsWing" camunda:formRef="LandRecordsWing" camunda:formRefBinding="deployment" camunda:assignee="LandRecordsWing">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_1p0uy0r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ib2z36</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="APIIC" name="APIIC" camunda:formRef="APIIC" camunda:formRefBinding="deployment" camunda:assignee="APIIC">
+      <bpmn:extensionElements />
+      <bpmn:incoming>Flow_0sl48us</bpmn:incoming>
+      <bpmn:outgoing>Flow_104h0d1</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:parallelGateway id="Gateway_1o3ypmt">
+      <bpmn:incoming>Flow_1kj9q2t</bpmn:incoming>
+      <bpmn:outgoing>Flow_11o7es6</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ux58mj</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1p0uy0r</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="Gateway_11wabuf">
+      <bpmn:incoming>Flow_1srf8k8</bpmn:incoming>
+      <bpmn:incoming>Flow_1ib2z36</bpmn:incoming>
+      <bpmn:incoming>Flow_14j0vsj</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sl48us</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:startEvent id="Start" name="Start" camunda:formKey="startNewProcess">
+      <bpmn:outgoing>Flow_1kj9q2t</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1kj9q2t" sourceRef="Start" targetRef="Gateway_1o3ypmt" />
+    <bpmn:exclusiveGateway id="Gateway_1s1mtvn">
+      <bpmn:incoming>Flow_104h0d1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1h1xvkh</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0kjkkx1</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_104h0d1" sourceRef="APIIC" targetRef="Gateway_1s1mtvn" />
+    <bpmn:sequenceFlow id="Flow_1h1xvkh" sourceRef="Gateway_1s1mtvn" targetRef="ApplicationStatusYes">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${APIICApproval==true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0kjkkx1" sourceRef="Gateway_1s1mtvn" targetRef="ApplicationStatusNo">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${APIICApproval==false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_1ezdrxx">
+      <bpmn:incoming>Flow_0gss2w8</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0gss2w8" sourceRef="ApplicationStatusYes" targetRef="Event_1ezdrxx" />
+    <bpmn:endEvent id="Event_0qhf9ta">
+      <bpmn:incoming>Flow_0t3ym5k</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0t3ym5k" sourceRef="ApplicationStatusNo" targetRef="Event_0qhf9ta" />
+    <bpmn:serviceTask id="ApplicationStatusYes" name="ApplicationStatusYes" camunda:class="com.truviq.camunda.EmailSender">
+      <bpmn:incoming>Flow_1h1xvkh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gss2w8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ApplicationStatusNo" name="ApplicationStatusNo" camunda:class="com.truviq.camunda.RejectionEmailSender">
+      <bpmn:incoming>Flow_0kjkkx1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0t3ym5k</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmn:message id="Message_13fl4ts" />
+  <bpmn:message id="Message_0se6q0c" name="Approved" />
+  <bpmn:message id="Message_1mrhm7l" name="Rejected" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="LandAllotment_camunda">
+      <bpmndi:BPMNShape id="Activity_0nus96y_di" bpmnElement="FinananceDepartment">
+        <dc:Bounds x="440" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05i521w_di" bpmnElement="TaxDepartment">
+        <dc:Bounds x="440" y="190" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1sn6mrn_di" bpmnElement="LandRecordsWing">
+        <dc:Bounds x="440" y="300" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0x5d2jj_di" bpmnElement="APIIC">
+        <dc:Bounds x="720" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0smi3da_di" bpmnElement="Gateway_1o3ypmt">
+        <dc:Bounds x="325" y="92" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1m2n9ss_di" bpmnElement="Gateway_11wabuf">
+        <dc:Bounds x="605" y="92" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zxeocz_di" bpmnElement="Start">
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="159" y="142" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1s1mtvn_di" bpmnElement="Gateway_1s1mtvn" isMarkerVisible="true">
+        <dc:Bounds x="885" y="92" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ezdrxx_di" bpmnElement="Event_1ezdrxx">
+        <dc:Bounds x="1282" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0qhf9ta_di" bpmnElement="Event_0qhf9ta">
+        <dc:Bounds x="1282" y="212" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0yn9yor_di" bpmnElement="ApplicationStatusYes">
+        <dc:Bounds x="1110" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1f0s4vq_di" bpmnElement="ApplicationStatusNo">
+        <dc:Bounds x="1110" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_11o7es6_di" bpmnElement="Flow_11o7es6">
+        <di:waypoint x="375" y="117" />
+        <di:waypoint x="440" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ux58mj_di" bpmnElement="Flow_0ux58mj">
+        <di:waypoint x="350" y="142" />
+        <di:waypoint x="350" y="230" />
+        <di:waypoint x="440" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1p0uy0r_di" bpmnElement="Flow_1p0uy0r">
+        <di:waypoint x="350" y="142" />
+        <di:waypoint x="350" y="340" />
+        <di:waypoint x="440" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1srf8k8_di" bpmnElement="Flow_1srf8k8">
+        <di:waypoint x="540" y="117" />
+        <di:waypoint x="605" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ib2z36_di" bpmnElement="Flow_1ib2z36">
+        <di:waypoint x="540" y="340" />
+        <di:waypoint x="630" y="340" />
+        <di:waypoint x="630" y="142" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14j0vsj_di" bpmnElement="Flow_14j0vsj">
+        <di:waypoint x="540" y="230" />
+        <di:waypoint x="630" y="230" />
+        <di:waypoint x="630" y="142" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sl48us_di" bpmnElement="Flow_0sl48us">
+        <di:waypoint x="655" y="117" />
+        <di:waypoint x="720" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kj9q2t_di" bpmnElement="Flow_1kj9q2t">
+        <di:waypoint x="188" y="117" />
+        <di:waypoint x="325" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_104h0d1_di" bpmnElement="Flow_104h0d1">
+        <di:waypoint x="820" y="117" />
+        <di:waypoint x="885" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1h1xvkh_di" bpmnElement="Flow_1h1xvkh">
+        <di:waypoint x="935" y="117" />
+        <di:waypoint x="1110" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kjkkx1_di" bpmnElement="Flow_0kjkkx1">
+        <di:waypoint x="910" y="142" />
+        <di:waypoint x="910" y="230" />
+        <di:waypoint x="1110" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gss2w8_di" bpmnElement="Flow_0gss2w8">
+        <di:waypoint x="1210" y="117" />
+        <di:waypoint x="1282" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t3ym5k_di" bpmnElement="Flow_0t3ym5k">
+        <di:waypoint x="1210" y="243" />
+        <di:waypoint x="1282" y="233" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

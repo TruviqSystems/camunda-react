@@ -20,7 +20,7 @@ const SimpleForm = props => {
           switch(formtodisplay[formType]) {
             case "FirmDetails":
               return(
-                <form onSubmit={handleSubmit} className=" container">
+                <form onSubmit={handleSubmit} className="container">
                       <h1 className='fsc-5 mb-4'>Firm Details</h1>
                       <div className='mb-2'>
                         <label><h4>Firm Name</h4></label>
@@ -31,7 +31,7 @@ const SimpleForm = props => {
                             type="text"
                             placeholder="Firm Name"
                             required
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                           />
                         </div>
                       </div>
@@ -43,7 +43,7 @@ const SimpleForm = props => {
                             component="input"
                             type="text"
                             placeholder="Contact Name"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                             required
                           />
                         </div>
@@ -67,7 +67,7 @@ const SimpleForm = props => {
                             component="input"
                             type="text"
                             placeholder="Name of Promoter"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                             required
                           />
                         </div>
@@ -80,7 +80,7 @@ const SimpleForm = props => {
                             component="input"
                             type="text"
                             placeholder="Optional Promoter 1"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                           />
                         </div>
                       </div>
@@ -92,7 +92,7 @@ const SimpleForm = props => {
                             component="input"
                             type="text"
                             placeholder="Optional Promoter 2"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                           />
                         </div>
                       </div>
@@ -104,7 +104,7 @@ const SimpleForm = props => {
                             component="input"
                             type="digit"
                             placeholder="Mobile Number"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                             required
                           />
                         </div>
@@ -117,7 +117,7 @@ const SimpleForm = props => {
                             component="input"
                             type="email"
                             placeholder="Email"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                             required
                           />
                         </div>
@@ -137,7 +137,7 @@ const SimpleForm = props => {
                   )
                   case "ProjectDetails":
                     return(
-                      <form onSubmit={handleSubmit} className=" container">
+                      <form onSubmit={handleSubmit} className=" container ">
                         <h1 className='fsc-5 mb-4'>Project Details</h1>
                     <div className='mb-2'>
                       <label><h4>Project Status</h4></label>
@@ -184,7 +184,7 @@ const SimpleForm = props => {
                             component="input"
                             type="number"
                             placeholder="Land in yards"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                             required
                           />
                         </div>
@@ -197,7 +197,7 @@ const SimpleForm = props => {
                             component="input"
                             type="text"
                             placeholder="Land Location"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                             required
                           />
                         </div>
@@ -216,7 +216,7 @@ const SimpleForm = props => {
                     )
             default :
             return(
-              <form onSubmit={handleSubmit} className=" container">
+              <form onSubmit={handleSubmit} className=" container ">
                      <h1 className='fsc-5 mb-4'>Firm Details</h1>
                       <div className='mb-2'>
                         <label><h4>Firm Name</h4></label>
@@ -226,7 +226,7 @@ const SimpleForm = props => {
                             component="input"
                             type="text"
                             placeholder="Firm Name"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                             required
                           />
                         </div>
@@ -239,7 +239,7 @@ const SimpleForm = props => {
                             component="input"
                             type="text"
                             placeholder="Contact Name"
-                            className='border rounded form-control'
+                            className='border rounded form-control form-floating'
                             required
                           />
                         </div>
@@ -256,7 +256,7 @@ const SimpleForm = props => {
     }
   return (
    <div className='container d-flex flex-column justify-content-center align-items-center'>
-    <div className='container-fluid bg-light border rounded p-3' >
+    <div className='container-fluid bg-light border rounded p-3 shadow-lg' >
     {renderForm()}
     </div>
    </div>

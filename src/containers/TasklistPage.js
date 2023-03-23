@@ -15,7 +15,7 @@ class TasklistPage extends Component {
     return (<List.Item key={task.id}>
       <List.Icon name='browser' size='large' verticalAlign='middle' />
       <List.Content>
-        <Link to={`/tasklist/${task.processDefinitionId}/${task.id}`}>
+        <Link>
           <List.Header>{task.name}</List.Header>
           <List.Description>{task.created}</List.Description>
         </Link>
@@ -37,9 +37,9 @@ class TasklistPage extends Component {
     } else {
       task = sortBy(task, 'created').reverse()
       return (
-        <Grid divided>
+        <Grid divided celled>
           <Grid.Row>
-            <Grid.Column width={4}>
+            <Grid.Column width={7}>
               <List divided relaxed>
               {task.map((item) => this.renderItem(item))}
               </List>

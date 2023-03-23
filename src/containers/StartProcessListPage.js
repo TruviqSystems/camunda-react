@@ -6,6 +6,7 @@ import BPMNDiagram from '../components/BPMNDiagram'
 import List from '../components/List'
 import { loadProcessDefinitionsWithXML } from '../actions'
 
+
 class StartProcessListPage extends Component {
   componentWillMount() {
     this.props.loadProcessDefinitionsWithXML();

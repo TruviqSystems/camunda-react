@@ -1,0 +1,155 @@
+{
+  "components": [
+    {
+      "text": "# Firm Details:",
+      "type": "text",
+      "id": "Field_19nu9x0"
+    },
+    {
+      "label": "Firm Name",
+      "type": "textfield",
+      "id": "Field_08unc8g",
+      "key": "FirmName",
+      "disabled": true
+    },
+    {
+      "label": "ContactPerson",
+      "type": "textfield",
+      "id": "Field_1dx8kke",
+      "key": "ContactPerson",
+      "disabled": true
+    },
+    {
+      "text": "# Promotor Details",
+      "type": "text",
+      "id": "Field_1w4g9di"
+    },
+    {
+      "label": "Name Of Promoter",
+      "type": "textfield",
+      "id": "Field_1gbizct",
+      "key": "nameOfPromoter",
+      "disabled": true
+    },
+    {
+      "label": "Optional Promoter1",
+      "type": "textfield",
+      "id": "Field_1huf8pz",
+      "key": "optionalPromotor1",
+      "disabled": true
+    },
+    {
+      "label": "Optional Promoter2",
+      "type": "textfield",
+      "id": "Field_1om9c9l",
+      "key": "optionalPromotor2",
+      "disabled": true
+    },
+    {
+      "label": "Mobile Number",
+      "type": "number",
+      "id": "Field_0bkpdxe",
+      "key": "mobilenumber",
+      "disabled": true
+    },
+    {
+      "label": "EmailId",
+      "type": "textfield",
+      "id": "Field_1gd7e9i",
+      "key": "emailId",
+      "disabled": true
+    },
+    {
+      "text": "# Project Details:",
+      "type": "text",
+      "id": "Field_1m75gmz"
+    },
+    {
+      "values": [
+        {
+          "label": "New ",
+          "value": "New "
+        },
+        {
+          "label": "Existing ",
+          "value": "Existing "
+        }
+      ],
+      "label": "Project Status",
+      "type": "radio",
+      "id": "Field_1npw9tf",
+      "key": "projectStatus",
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Agricultural Project",
+          "value": "Agricultural Project"
+        },
+        {
+          "label": "Environmental Project",
+          "value": "Environmental Project"
+        },
+        {
+          "label": "Transportational Project",
+          "value": "Transportational Project"
+        },
+        {
+          "label": "Chemical Project",
+          "value": "Chemical Project"
+        }
+      ],
+      "label": "Project Category",
+      "type": "select",
+      "id": "Field_1qpp106",
+      "key": "ProjetCategory",
+      "disabled": true
+    },
+    {
+      "text": "# Land Details:",
+      "type": "text",
+      "id": "Field_1t0fb0a"
+    },
+    {
+      "label": "Area Of The Land",
+      "type": "textfield",
+      "id": "Field_1oqh6mm",
+      "key": "areaOfTheLand",
+      "disabled": true
+    },
+    {
+      "label": "Land Location",
+      "type": "textfield",
+      "id": "Field_100d7tk",
+      "key": "landlocation",
+      "disabled": true
+    },
+    {
+      "text": "# For The Departement:",
+      "type": "text",
+      "id": "Field_18opq3f"
+    },
+    {
+      "label": "Land Departments Comments",
+      "type": "textfield",
+      "id": "Field_003ynmq",
+      "key": "LRWComments"
+    },
+    {
+      "label": "Approval",
+      "type": "checkbox",
+      "id": "Field_1immbes",
+      "key": "LRWApproval"
+    }
+  ],
+  "type": "default",
+  "id": "LandRecordsWing",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
