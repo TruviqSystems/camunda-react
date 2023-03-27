@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { Field, reduxForm } from 'redux-form'
-
+import './index.css'
 
 const SimpleForm = props => {
   const formtodisplay=['FirmDetails','PromoterDetails','ProjectDetails']
@@ -15,6 +15,8 @@ const SimpleForm = props => {
       setFormType(formType+1)
   }
 
+
+
   const { handleSubmit, pristine, reset, submitting } = props 
   const renderForm=()=>{
           switch(formtodisplay[formType]) {
@@ -23,33 +25,51 @@ const SimpleForm = props => {
                 <form onSubmit={handleSubmit} className="container">
                       <h1 className='fsc-5 mb-4'>Firm Details</h1>
                       <div className='mb-2'>
-                        <label><h4>Firm Name</h4></label>
+                        
                         <div>
                           <Field
                             name="FirmName"
                             component="input"
                             type="text"
                             placeholder="Firm Name"
-                            required
                             className='border rounded form-control form-floating'
+                            required
                           />
                         </div>
-                      </div>
+                      </div> <br/>
                       <div className='mb-2'>
-                        <label><h4>Contact Person</h4></label>
+                       
                         <div>
                           <Field
                             name="ContactPerson"
-                            component="input"
-                            type="text"
+                            component="input" 
+                            type="text" 
                             placeholder="Contact Name"
                             className='border rounded form-control form-floating'
                             required
-                          />
+                          
+                          /> 
                         </div>
+
                       </div>
+                      <br/>
                       <div className='mb-2'>
-                      <button className='btn btn-primary mb-2'  type="button" onClick={NextStep} disabled={pristine || submitting}>
+                       
+                       <div>
+                         <Field
+                           name="mailID"
+                           component="input" 
+                           type="email" 
+                           placeholder="Email"
+                           className='border rounded form-control form-floating'
+                           required
+                         
+                         /> 
+                       </div>
+                       
+                     </div>  <br/> 
+                      <div className='mb-2'>
+                      <button className='btn btn-primary mb-2'  type="submit" onClick={NextStep} disabled={pristine || submitting}>
                           Next 
                         </button>
                       </div>
@@ -57,23 +77,25 @@ const SimpleForm = props => {
               )
             case "PromoterDetails":
               return(
-                   <form onSubmit={handleSubmit} className=" container ">
+                   <form onSubmit={handleSubmit} className=" container">
                       <h1 className='fsc-5 mb-4'>Promoter Details</h1>
                       <div className='mb-2'>
-                        <label><h4>Name of Promoter</h4></label>
+                        
                         <div>
                           <Field
                             name="nameOfPromoter"
                             component="input"
-                            type="text"
+                            type="text"   
                             placeholder="Name of Promoter"
+                          
                             className='border rounded form-control form-floating'
                             required
+                            
                           />
                         </div>
-                      </div>
+                      </div>  <br/>
                       <div className='mb-2'>
-                        <label><h4>Optional Promoter 1</h4></label>
+                       
                         <div>
                           <Field
                             name="optionalPromotor1"
@@ -81,11 +103,12 @@ const SimpleForm = props => {
                             type="text"
                             placeholder="Optional Promoter 1"
                             className='border rounded form-control form-floating'
+                            required
                           />
                         </div>
-                      </div>
+                      </div>  <br/>
                       <div className='mb-2'>
-                        <label><h4>Optional Promoter 2</h4></label>
+                       
                         <div>
                           <Field
                             name="optionalPromotor2"
@@ -93,11 +116,12 @@ const SimpleForm = props => {
                             type="text"
                             placeholder="Optional Promoter 2"
                             className='border rounded form-control form-floating'
+                            required
                           />
                         </div>
-                      </div>
+                      </div>  <br/>
                       <div className='mb-2'>
-                        <label><h4>Mobile Number</h4></label>
+                       
                         <div>
                           <Field
                             name="mobilenumber"
@@ -108,9 +132,9 @@ const SimpleForm = props => {
                             required
                           />
                         </div>
-                      </div>
+                      </div>  <br/>
                       <div className='mb-2'>
-                        <label><h4>Email Id</h4></label>
+                       
                         <div>
                           <Field
                             name="emailId"
@@ -121,7 +145,7 @@ const SimpleForm = props => {
                             required
                           />
                         </div>
-                      </div>
+                      </div>  <br/>
                       <div>
                       <div>
                       <span><button className='btn btn-primary mb-2'  type="button" onClick={PrevStep} disabled={pristine || submitting}>
@@ -137,7 +161,7 @@ const SimpleForm = props => {
                   )
                   case "ProjectDetails":
                     return(
-                      <form onSubmit={handleSubmit} className=" container ">
+                      <form onSubmit={handleSubmit} className=" container">
                         <h1 className='fsc-5 mb-4'>Project Details</h1>
                     <div className='mb-2'>
                       <label><h4>Project Status</h4></label>
@@ -147,6 +171,7 @@ const SimpleForm = props => {
                                   component="input" 
                                   type="radio" 
                                   value="New"
+                                  required
                                   />
                                   {' '}
                                   New  
@@ -157,27 +182,31 @@ const SimpleForm = props => {
                                 component="input"
                                 type="radio"
                                 value="Existing"
+                                required
                                 />
                                 {' '}
                                 Existing
                                 </label>
                         </div>
-                      </div>
+                      </div>  <br/>
                     <div className='mb-2'>
                       <label><h4>Project Category</h4></label>
                       <div>
                       <Field name="ProjetCategory" 
                       component="select"
+                      defaultValue=""  
                       required
-                      className='border rounded form-control'>
+                      className='border rounded form-control'>  <br/>
+                      <option value="" disabled>Select a category</option>
                       <option value="Chemical Industry">Chemical Industry</option>
                       <option value="Agricultural Project">Agricultural Project</option>
                       <option value="Informational Technology">Informational Technology</option>
+                      required
                       </Field>
                       </div>
-                    </div>
+                    </div>  <br/>
                     <div className='mb-2'>
-                        <label><h4>Land in yards</h4></label>
+                        
                         <div>
                           <Field
                             name="areaOfTheLand"
@@ -188,9 +217,9 @@ const SimpleForm = props => {
                             required
                           />
                         </div>
-                    </div>
+                    </div>  <br/>
                     <div className='mb-2'>
-                        <label><h4>Land Location</h4></label>
+                        
                         <div>
                           <Field
                             name="landlocation"
@@ -201,7 +230,7 @@ const SimpleForm = props => {
                             required
                           />
                         </div>
-                    </div>
+                    </div>  <br/>
                     <div>
                     <span><button className='btn btn-primary mb-2'  type="button" onClick={PrevStep} disabled={pristine || submitting}>
                           Back
@@ -216,7 +245,7 @@ const SimpleForm = props => {
                     )
             default :
             return(
-              <form onSubmit={handleSubmit} className=" container ">
+              <form onSubmit={handleSubmit} className=" container">
                      <h1 className='fsc-5 mb-4'>Firm Details</h1>
                       <div className='mb-2'>
                         <label><h4>Firm Name</h4></label>
@@ -244,9 +273,26 @@ const SimpleForm = props => {
                           />
                         </div>
                       </div>
+                      <br/>
+                      <div className='mb-2'>
+                       
+                       <div>
+                         <Field
+                           name="mailID"
+                           component="input" 
+                           type="email" 
+                           placeholder="Email"
+                           className='border rounded form-control form-floating'
+                           required
+                           readOnly
+                         
+                         /> 
+                       </div>
+                       
+                     </div>
                       <div className='mb-2'>
                       <p className='text-warning fsc-3'>Please Fill all the forms displayed in options above!</p>
-                      <button className='btn btn-primary mb-2'  type="button" onClick={NextStep} disabled={pristine || submitting}>
+                      <button className='btn btn-primary mb-2'  type="submit" onClick={NextStep} disabled={pristine || submitting}>
                           Next
                         </button>
                       </div>
@@ -256,7 +302,7 @@ const SimpleForm = props => {
     }
   return (
    <div className='container d-flex flex-column justify-content-center align-items-center'>
-    <div className='container-fluid bg-light border rounded p-3 shadow-lg' >
+    <div className='container-fluid bg-light border rounded p-3 shadow-lg bg' >
     {renderForm()}
     </div>
    </div>

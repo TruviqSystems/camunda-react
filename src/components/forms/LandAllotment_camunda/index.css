@@ -1,0 +1,9 @@
+.form-control {
+    font-size: 16px;
+    border-color: #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .bg{
+    background-image: linear-gradient(to right,rgb(113, 236, 255),rgb(148, 113, 255),rgb(246, 38, 229));
+  }

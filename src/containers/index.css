@@ -7,10 +7,13 @@
     text-align: center;
     justify-content: center;
     display: flex;
+
+
     
 }
 
 .sub-main{
+    background-image: linear-gradient(to left,rgb(113, 236, 255),#fff);
     display: flex;
     justify-content:center;
     padding: 15px;
