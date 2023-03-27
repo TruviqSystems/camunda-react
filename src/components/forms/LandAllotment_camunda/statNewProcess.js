@@ -284,7 +284,7 @@ const SimpleForm = props => {
                            placeholder="Email"
                            className='border rounded form-control form-floating'
                            required
-                           readOnly
+                           readonly
                          
                          /> 
                        </div>
