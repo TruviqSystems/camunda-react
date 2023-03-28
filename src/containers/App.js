@@ -20,6 +20,11 @@ const App = ({actions, children}) => (
           </p>
       </form>
     </Container>
+<<<<<<< HEAD
+=======
+    
+    
+>>>>>>> 6ff03e7e17778c6a7ce2e343e423ec46403de919
   </div>
 )
 
