@@ -11,12 +11,13 @@ const num=()=>{
   const randomnum=Math.floor(Math.random() * 1000) + 1;
   return randomnum
 }
+App=App+num()
 
 
 class StartProcessPage extends Component {
   componentWillMount() {
     this.props.loadFormKey(this.props.process);
-    App=App+num()
+    
   }
 
  

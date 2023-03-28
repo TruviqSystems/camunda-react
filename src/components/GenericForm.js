@@ -3,6 +3,13 @@ import * as FormTypes from './forms'
 import { completeTask, startProcessInstance, loadTaskVariables } from '../actions'
 import { connect } from 'react-redux'
 
+let App="Reference"
+
+const num=()=>{
+  const randomnum=Math.floor(Math.random() * 1000) + 1;
+  return randomnum
+}
+App=App+num()
 class GenericForm extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (!this.state || !this.state.loading) {
@@ -54,7 +61,7 @@ class GenericForm extends Component {
     });
     return {
       'variables': variables,
-      'businessKey':'Dhoom'
+      'businessKey':`${App}`
     }
   }
 }

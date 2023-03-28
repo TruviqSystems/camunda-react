@@ -1,4 +1,4 @@
 
-export { default as statNewProcess } from './statNewProcess'
+export { default as startNewProcess } from './startNewProcess'
 
 export {default as userTask} from './userTask'

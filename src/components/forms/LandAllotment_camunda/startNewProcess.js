@@ -31,7 +31,7 @@ const SimpleForm = props => {
                             name="FirmName"
                             component="input"
                             type="text"
-                            placeholder="Firm Name"
+                            placeholder="Firm Name*"
                             className='border rounded form-control form-floating'
                             required
                           />
@@ -44,7 +44,7 @@ const SimpleForm = props => {
                             name="ContactPerson"
                             component="input" 
                             type="text" 
-                            placeholder="Contact Name"
+                            placeholder="Contact Name*"
                             className='border rounded form-control form-floating'
                             required
                           
@@ -60,7 +60,7 @@ const SimpleForm = props => {
                            name="mailID"
                            component="input" 
                            type="email" 
-                           placeholder="Email"
+                           placeholder="Email*"
                            className='border rounded form-control form-floating'
                            required
                          
@@ -86,7 +86,7 @@ const SimpleForm = props => {
                             name="nameOfPromoter"
                             component="input"
                             type="text"   
-                            placeholder="Name of Promoter"
+                            placeholder="Name of Promoter*"
                           
                             className='border rounded form-control form-floating'
                             required
@@ -126,25 +126,14 @@ const SimpleForm = props => {
                           <Field
                             name="mobilenumber"
                             component="input"
-                            type="digit"
-                            placeholder="Mobile Number"
+                            type="number"
+                            placeholder="Mobile Number*"
                             className='border rounded form-control form-floating'
                             required
                           />
                         </div>
                       </div>  <br/>
                       <div className='mb-2'>
-                       
-                        <div>
-                          <Field
-                            name="emailId"
-                            component="input"
-                            type="email"
-                            placeholder="Email"
-                            className='border rounded form-control form-floating'
-                            required
-                          />
-                        </div>
                       </div>  <br/>
                       <div>
                       <div>
