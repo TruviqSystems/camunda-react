@@ -20,7 +20,6 @@ const App = ({actions, children}) => (
           </p>
       </form>
     </Container>
-    
   </div>
 )
 
