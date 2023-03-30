@@ -6,7 +6,7 @@ import GenericForm from '../components/GenericForm'
 import { loadProcessDefinitions, loadFormKey } from '../actions'
 
 
-let App="Reference"
+let App="A-"
 const num=()=>{
   const randomnum=Math.floor(Math.random() * 1000) + 1;
   return randomnum
@@ -41,7 +41,7 @@ class StartProcessPage extends Component {
       const key = formKey['undefined'].key
       return (
         <div>
-          <GenericForm formKey={key} processDefinitionKey={process} values/>
+          <GenericForm formKey={key} processDefinitionKey={process} values App={App}/>
         </div>
       )
     }

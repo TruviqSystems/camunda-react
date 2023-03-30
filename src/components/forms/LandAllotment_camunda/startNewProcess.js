@@ -15,8 +15,6 @@ const SimpleForm = props => {
       setFormType(formType+1)
   }
 
-
-
   const { handleSubmit, pristine, reset, submitting } = props 
   const renderForm=()=>{
           switch(formtodisplay[formType]) {
