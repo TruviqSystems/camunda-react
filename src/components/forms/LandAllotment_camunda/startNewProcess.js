@@ -152,47 +152,35 @@ const SimpleForm = props => {
                     return(
                       <form onSubmit={handleSubmit} className=" container">
                         <h1 className='fsc-5 mb-4'>Project Details</h1>
+                    
                     <div className='mb-2'>
-                      <label><h4>Project Status</h4></label>
-                        <div>
-                          <label><Field 
-                                  name="projectStatus" 
-                                  component="input" 
-                                  type="radio" 
-                                  value="New"
-                                  required
-                                  />
-                                  {' '}
-                                  New  
-                          </label>&nbsp;&nbsp;&nbsp;
-                          <label>
-                                <Field
-                                name="projectStatus" 
-                                component="input"
-                                type="radio"
-                                value="Existing"
-                                required
-                                />
-                                {' '}
-                                Existing
-                                </label>
-                        </div>
-                      </div>  <br/>
-                    <div className='mb-2'>
-                      <label><h4>Project Category</h4></label>
+                     
                       <div>
                       <Field name="ProjetCategory" 
                       component="select"
                       defaultValue=""  
                       required
                       className='border rounded form-control'>  <br/>
-                      <option value="" disabled>Select a category</option>
+                      <option value="" disabled>Select project category</option>
                       <option value="Chemical Industry">Chemical Industry</option>
                       <option value="Agricultural Project">Agricultural Project</option>
                       <option value="Informational Technology">Informational Technology</option>
                       required
                       </Field>
                       </div>
+                    </div>  <br/>
+                    <div className='mb-2'>
+                        
+                        <div>
+                          <Field
+                            name="employment"
+                            component="input"
+                            type="number"
+                            placeholder="Estimated Number of Employment "
+                            className='border rounded form-control form-floating'
+                            required
+                          />
+                        </div>
                     </div>  <br/>
                     <div className='mb-2'>
                         
