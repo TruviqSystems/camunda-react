@@ -1,6 +1,7 @@
 import * as ActionTypes from '../constants/ActionTypes'
 import merge from 'lodash/merge'
 import { combineReducers } from 'redux'
+import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../actions';
 import { reducer as reduxFormReducer } from 'redux-form'
 
 // Updates an entity cache in response to any action with response.entities.
@@ -27,6 +28,16 @@ const entities = (state = {}, action) => {
 
   if (action.response && action.response.entities) {
     return merge({}, state, action.response.entities)
+  }
+
+  if( FETCH_DATA_REQUEST){
+    return { ...state, isLoading: true };
+  }
+  if( FETCH_DATA_SUCCESS){
+    return { ...state, isLoading: false, data: action.payload };
+  }
+  if(FETCH_DATA_FAILURE){
+    return { ...state, isLoading: false, error: action.payload }
   }
   return state
 }

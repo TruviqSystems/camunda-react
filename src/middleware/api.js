@@ -1,7 +1,28 @@
 import { normalize, schema } from 'normalizr'
 import { camelizeKeys } from 'humps'
+import { FETCH_DATA_REQUEST,FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE,fetchData } from '../actions';
 
 const API_ROOT = '/engine-rest/'
+
+
+
+ export const apiMiddleware = store => next => action => {
+    if (action.type === FETCH_DATA_REQUEST) {
+       
+      fetch("http://localhost:8080/process-definition?keyLike=LandAllotment_camunda&sortBy=version&sortOrder=asc")
+       .then(response => response.json())
+        .then(data => {
+         const successAction = { type: FETCH_DATA_SUCCESS, payload: data };
+          store.dispatch(successAction);
+        })
+         .catch(error => {
+         const failureAction = { type: FETCH_DATA_FAILURE, payload: error };
+          store.dispatch(failureAction);
+   });
+   }
+  return next(action);
+  };
+  
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.

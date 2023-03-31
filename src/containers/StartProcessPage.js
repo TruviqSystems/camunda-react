@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import GenericForm from '../components/GenericForm'
 import { loadProcessDefinitions, loadFormKey } from '../actions'
+import TasklistPage from './TasklistPage'
 
 
 let App="A-"
@@ -20,7 +21,7 @@ class StartProcessPage extends Component {
     
   }
 
- 
+
   render() {
     const { process, formKey, processInstanceStarted} = this.props
 
@@ -35,6 +36,7 @@ class StartProcessPage extends Component {
         <br/>
         <br/>
         <Link to="/tasklist/:processDefinitionId/:taskId"><h6>Application Id:{App}</h6></Link>
+        <TasklistPage/>
         </div>
       )
     } else {

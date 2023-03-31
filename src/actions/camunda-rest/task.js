@@ -4,7 +4,7 @@ import { CALL_API, Schemas } from '../../middleware/api'
 export const fetchTasks = () => ({
   [CALL_API]: {
     types: [ AT.TASKS_REQUEST, AT.TASKS_SUCCESS, AT.TASKS_FAILURE ],
-    endpoint: 'task?sortBy=created&sortOrder=desc',
+    endpoint: 'process-instance?processDefinitionKey=LandAllotment_camunda',
     schema: Schemas.TASK_ARRAY
   }
 })

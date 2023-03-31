@@ -5,10 +5,11 @@ import { Container, Header } from 'semantic-ui-react'
 import DeployProcess from '../components/DeployProcess'
 import './index.css'
 import logo from './image/logo.png'
+import TasklistPage from './TasklistPage'
 
 const App = ({actions, children}) => (
-  <div className='main'>
-    <Container text className='sub-main border border-dark'>
+  <div className='main d-flex flex-column justify-content-around'>
+    <Container text className='sub-main border border-dark mb-2'>
       <img src={logo} width={50} height={50}/>
       <Header as='h2' className='fsc-5 text-success'>Land Allotment Process</Header>
       <form className='form-floating'>
@@ -20,11 +21,17 @@ const App = ({actions, children}) => (
           </p>
       </form>
     </Container>
+    <Container className='p-1'>
+      <h1 className='fsc-3 text-success'>List of Applications</h1>
+    <TasklistPage/>
+    </Container>
+
   </div>
 )
 
 const mapStateToProps = state => ({
 })
+
 
 export default connect(
   mapStateToProps,

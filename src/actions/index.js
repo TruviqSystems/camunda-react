@@ -46,3 +46,18 @@ export const loadTaskVariables = (taskId, variableNames) => (dispatch, getState)
 export const deployProcess = (filename, file) => (dispatch, getState) => {
   return dispatch(DeploymentActions.postProcessXML(filename, file))
 }
+export const FETCH_DATA_REQUEST = 'FETCH_DATA_REQUEST';
+export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
+export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
+
+
+
+export const fetchData = () => {
+  return (dispatch) => {
+  dispatch({ type: FETCH_DATA_REQUEST });
+     return fetch("http://localhost:8080/process-definition?keyLike=LandAllotment_camunda&sortBy=version&sortOrder=asc")
+      .then(response => response.json())
+      .then(data => dispatch({ type: FETCH_DATA_SUCCESS, payload: data }))
+      .catch(error => dispatch({ type: FETCH_DATA_FAILURE, payload: error }));
+};
+}
