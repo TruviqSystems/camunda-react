@@ -7,6 +7,25 @@ const SimpleForm = props => {
 
   const [formType, setFormType] = useState(0);
 
+  const [inputFields, setInputFields] = useState([
+    { name: '', mobilenumber: '' }
+  ])
+
+  const addFields = () => {
+    
+    let newfield = { name: '',mobilenumber:'' }
+
+    setInputFields([...inputFields, newfield])
+
+}
+  const removeFields = (index) => {
+    let data = [...inputFields];
+    data.splice(index, 1)
+    setInputFields(data)
+
+}
+
+
   const PrevStep=(e)=>{
     setFormType(formType-1)
   }
@@ -77,62 +96,48 @@ const SimpleForm = props => {
               return(
                    <form onSubmit={handleSubmit} className=" container">
                       <h1 className='fsc-5 mb-4'>Promoter Details</h1>
+                      
                       <div className='mb-2'>
-                        
                         <div>
-                          <Field
-                            name="nameOfPromoter"
-                            component="input"
-                            type="text"   
-                            placeholder="Name of Promoter*"
-                          
-                            className='border rounded form-control form-floating'
-                            required
-                            
-                          />
+                            {inputFields.map((index,input) => {
+                              return (
+                                <div className='d-flex flex-row' key={index}>
+                                  <div className='mb-2'>
+                                    <div>
+                                      <input
+                                        name="nameOfPromoter"
+                                        component="input"
+                                        type="text"   
+                                        placeholder="Name of Promoter*"
+                                        className='border rounded form-control form-floating'
+                                        required
+                                        value={input.name} 
+
+                                      />
+                                    </div>
+                                  </div>
+                                  <div className='mb-2'>
+                                    <div>
+                                      <input
+                                        name="mobilenumber"
+                                        component="input"
+                                        type="number"
+                                        placeholder="Mobile Number*"
+                                        className='border rounded form-control form-floating'
+                                        required
+                                        value={input.mobilenumber}
+                                      />
+                                    </div>
+                                  </div>  
+                                  <button type='text' className="fsc fs-5 text-danger  btn btn-transperent border btn-sm btn1"  onClick={removeFields}>X</button>
+                                </div>
+                              )
+                            })}
                         </div>
+                        <p className='fs-3 text-primary'><span>
+                        <button type="button" className="btn btn-transperent border" onClick={addFields}>+</button></span></p>
                       </div>  <br/>
-                      <div className='mb-2'>
-                       
-                        <div>
-                          <Field
-                            name="optionalPromotor1"
-                            component="input"
-                            type="text"
-                            placeholder="Optional Promoter 1"
-                            className='border rounded form-control form-floating'
-                            required
-                          />
-                        </div>
-                      </div>  <br/>
-                      <div className='mb-2'>
-                       
-                        <div>
-                          <Field
-                            name="optionalPromotor2"
-                            component="input"
-                            type="text"
-                            placeholder="Optional Promoter 2"
-                            className='border rounded form-control form-floating'
-                            required
-                          />
-                        </div>
-                      </div>  <br/>
-                      <div className='mb-2'>
-                       
-                        <div>
-                          <Field
-                            name="mobilenumber"
-                            component="input"
-                            type="number"
-                            placeholder="Mobile Number*"
-                            className='border rounded form-control form-floating'
-                            required
-                          />
-                        </div>
-                      </div>  <br/>
-                      <div className='mb-2'>
-                      </div>  <br/>
+                        <br/>  <br/>
                       <div>
                       <div>
                       <span><button className='btn btn-primary mb-2'  type="button" onClick={PrevStep} disabled={pristine || submitting}>

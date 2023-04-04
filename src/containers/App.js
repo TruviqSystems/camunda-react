@@ -25,7 +25,7 @@ const App = ({actions, children}) => (
       <h1 className='fsc-3 text-success'>List of Applications</h1>
     <TasklistPage/>
     </Container>
-
+    <DeployProcess/>
   </div>
 )
 

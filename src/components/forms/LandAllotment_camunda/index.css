@@ -7,3 +7,7 @@
   .bg{
     background-image: linear-gradient(to right,white,white);
   }
+
+  .btn1{
+    height: 44px;
+  }
