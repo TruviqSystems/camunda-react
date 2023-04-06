@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component }from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { List, Grid } from 'semantic-ui-react'
@@ -6,15 +6,16 @@ import {  loadTasks,fetchTaskVariables } from '../actions'
 import Taskform from '../components/Taskform'
 import sortBy from 'lodash/sortBy'
 import { Table } from 'semantic-ui-react';
+import axios from 'axios'
 
-
+const approvedData = [{"applicant_email":"swapnithkondapalli@gmail.com","FirmName":"sameer","ContactPerson":"sameer","NameofPromotor":"sameer","PromotorMobile":"567890","ProjectCategory":"Informational Technology","EmploymentCount":"567890","AreaOfTheLand":"567890","LandLocation":"sameer","ReferenceID":"A-434","FireDepartmentComments":"Reviewed and Rejected","FireDepartmentApproval":0,"WaterDepartmentComments":"Reviewed and aproved","WaterDepartmentApproval":1,"EnvironmentDepartmentComments":"Reviewed and approved","EnvironmentDepartmentApproval":1,"APIICComments":"From APIIC","APIICApproval":1},{"applicant_email":"swapnithkondapalli@gmail.com","FirmName":"swapnith","ContactPerson":"swapnith","NameofPromotor":"truviq","PromotorMobile":"12334567890","ProjectCategory":"Informational Technology","EmploymentCount":"1234","AreaOfTheLand":"1233","LandLocation":"hyd","ReferenceID":"A-19","FireDepartmentComments":"Reviewed and Rejected","FireDepartmentApproval":0,"WaterDepartmentComments":"Reviewed and aproved","WaterDepartmentApproval":1,"EnvironmentDepartmentComments":"Reviewed and approved","EnvironmentDepartmentApproval":1,"APIICComments":"From APIIC","APIICApproval":1}]
 
 class TasklistPage extends Component {
-  state={responseData:[]}
 
   componentWillMount() {
     this.props.loadTasks();
   }
+
 
 
   renderItem(task,) {
@@ -31,8 +32,8 @@ class TasklistPage extends Component {
   }
 
   render() {
-    let newDate = new Date().toLocaleDateString()
     let { task } = this.props
+
     let taskForm = ''
     if (this.props.processDefinitionId) {
       taskForm = <Taskform/>
@@ -41,7 +42,7 @@ class TasklistPage extends Component {
     }
 
     if (!task) {
-      return (<div>Loading tasks</div>)
+      return (<div>No Pending Applications</div>)
     } else {
       task = sortBy(task, 'id').reverse();
       let counter = 1 // declare a counter variable
@@ -55,6 +56,7 @@ class TasklistPage extends Component {
           </Table.Row>
         )
       })
+
      return (
       <>
       <Table>
@@ -70,6 +72,7 @@ class TasklistPage extends Component {
       {tableRows}
       </Table.Body >
     </Table>
+
     </>
       ) 
     }

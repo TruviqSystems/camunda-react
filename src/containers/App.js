@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Container, Header } from 'semantic-ui-react'
+import { Container, Header, Table } from 'semantic-ui-react'
 import DeployProcess from '../components/DeployProcess'
 import './index.css'
 import logo from './image/logo.png'
 import TasklistPage from './TasklistPage'
+import TablesOfApproved from './Tables/TablesOfApproved'
+
+
 
 const App = ({actions, children}) => (
   <div className='main d-flex flex-column justify-content-around'>
@@ -24,8 +27,10 @@ const App = ({actions, children}) => (
     <Container className='p-1'>
       <h1 className='fsc-3 text-success'>List of Applications</h1>
     <TasklistPage/>
+    <br/>
+    <TablesOfApproved/>
     </Container>
-    <DeployProcess/>
+    
   </div>
 )
 
