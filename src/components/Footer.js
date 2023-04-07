@@ -4,7 +4,9 @@ import { Menu } from 'semantic-ui-react'
 export default class Footer extends Component {
   render() {
     return (
-      <div></div>
+      <div className='mt-5 bg-transparent'>
+        
+      </div>
     )
   }
 }

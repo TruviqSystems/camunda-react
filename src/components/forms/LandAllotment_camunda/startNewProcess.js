@@ -404,7 +404,7 @@ const SimpleForm = props => {
                           <Field
                             name="MobileNumber"
                             component="input"
-                            type="number"
+                            type="text"
                             placeholder="Mobile Number*"
                             className='border rounded form-control form-floating'
                             required
@@ -466,7 +466,7 @@ const SimpleForm = props => {
                           <Field
                             name="AreaOfTheLand"
                             component="input"
-                            type="number"
+                            type="text"
                             placeholder="Land in yards"
                             className='border rounded form-control form-floating'
                             required

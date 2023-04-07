@@ -5,19 +5,23 @@
 
 .main{
     text-align: center;
-    justify-content: center;
     display: flex;
-      
 }
 
 .sub-main{
-    background-image: linear-gradient(to left,rgb(113, 236, 255),#fff);
+    
     display: flex;
     justify-content:center;
     padding: 15px;
-    height: 350px;
-    width:35%;
+    height: 250px;
+    width:100vw;
     box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
     border-width:1px;
     border-radius: 14px;
+}
+.background-container{
+    background-image: url("C:\Users\sam\OneDrive\Desktop\styling\camunda_react\camunda-react\src\components\image\bg-presentation.jpg");
+    background-size:cover;
+    background-position:top;
+    background: cover;
 }

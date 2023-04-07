@@ -59,7 +59,7 @@ class TasklistPage extends Component {
 
      return (
       <>
-      <Table>
+      <Table className='bg-transparent text-white fs-5'>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>S.NO</Table.HeaderCell>

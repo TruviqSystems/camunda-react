@@ -22,14 +22,14 @@ function TablesOfApproved() {
   return (
     <div>
       <h1 className='fsc-3 text-success'>Approved Applications</h1>
-      <Table>
+      <Table className='bg-transparent text-white fs-5'>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>S.No.</Table.HeaderCell>
           <Table.HeaderCell>Land No.</Table.HeaderCell>
           <Table.HeaderCell>Promoter Name</Table.HeaderCell>
-          <Table.HeaderCell>Application Name</Table.HeaderCell>
-          <Table.HeaderCell>Area of Land Alloted</Table.HeaderCell>
+          <Table.HeaderCell>Applicant mail</Table.HeaderCell>
+          <Table.HeaderCell>Land in Yards</Table.HeaderCell>
           <Table.HeaderCell>Reference ID</Table.HeaderCell>
           <Table.HeaderCell>Comments</Table.HeaderCell>
         </Table.Row>
