@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import logo from './image/logo.png'
+import logo from './image/react.png'
 import TasklistPage from '../containers/TasklistPage'
 import TablesOfApproved from '../containers/Tables/TablesOfApproved'
 
@@ -18,7 +18,7 @@ export default class Header extends Component {
       <header className="header p-5">
           <nav class="navbar navbar-expand-lg bg-body-light bg-transparent border rounded-5">
             <div class="container-fluid">
-            <img src={logo} alt="" width={50} height={50}/>
+            <img src={logo} alt="" width={100} height={50}/>
               <Link class="navbar-brand text-white" to="/" ><h1>Land Allotment</h1></Link>
               <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">

@@ -39,7 +39,7 @@ const App = ({actions, children}) => (
         </div>
         <div className='d-flex flex-column justify-content-center'>
           <div>
-          <h3 className='fsc-5 text-success'>Industrial Lands</h3>
+          <h3 className='fsc-5 fs-1 text-success'>Industrial Lands</h3>
           
           </div>
           <div className="p-3 mb-2 bg-transparent text-body align-self-center" style={{width: "18rem"}}>
@@ -52,7 +52,7 @@ const App = ({actions, children}) => (
         </div>
         <div className='d-flex flex-column justify-content-center'>
           <div>
-          <h3 className='fsc-5 text-success'>Recognization</h3>
+          <h3 className='fsc-5 fs-1 text-success'>Recognization</h3>
           
           </div>
           <div className="p-3 mb-2 bg-transparent text-body align-self-center" style={{width: "18rem"}}>
