@@ -1,4 +1,4 @@
-import React, { Component }from 'react'
+import React, { Component}from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { List, Grid } from 'semantic-ui-react'
@@ -6,16 +6,24 @@ import {  loadTasks,fetchTaskVariables } from '../actions'
 import Taskform from '../components/Taskform'
 import sortBy from 'lodash/sortBy'
 import { Table } from 'semantic-ui-react';
-import axios from 'axios'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const approvedData = [{"applicant_email":"swapnithkondapalli@gmail.com","FirmName":"sameer","ContactPerson":"sameer","NameofPromotor":"sameer","PromotorMobile":"567890","ProjectCategory":"Informational Technology","EmploymentCount":"567890","AreaOfTheLand":"567890","LandLocation":"sameer","ReferenceID":"A-434","FireDepartmentComments":"Reviewed and Rejected","FireDepartmentApproval":0,"WaterDepartmentComments":"Reviewed and aproved","WaterDepartmentApproval":1,"EnvironmentDepartmentComments":"Reviewed and approved","EnvironmentDepartmentApproval":1,"APIICComments":"From APIIC","APIICApproval":1},{"applicant_email":"swapnithkondapalli@gmail.com","FirmName":"swapnith","ContactPerson":"swapnith","NameofPromotor":"truviq","PromotorMobile":"12334567890","ProjectCategory":"Informational Technology","EmploymentCount":"1234","AreaOfTheLand":"1233","LandLocation":"hyd","ReferenceID":"A-19","FireDepartmentComments":"Reviewed and Rejected","FireDepartmentApproval":0,"WaterDepartmentComments":"Reviewed and aproved","WaterDepartmentApproval":1,"EnvironmentDepartmentComments":"Reviewed and approved","EnvironmentDepartmentApproval":1,"APIICComments":"From APIIC","APIICApproval":1}]
 
 class TasklistPage extends Component {
 
+  state = {
+    isOpen: false,
+    AppId:""
+  };
+
+  openModal = (id) => this.setState({ isOpen: true,AppId:`${id}`});
+  closeModal = () => this.setState({ isOpen: false });
+
   componentWillMount() {
     this.props.loadTasks();
   }
-
 
 
   renderItem(task,) {
@@ -33,7 +41,6 @@ class TasklistPage extends Component {
 
   render() {
     let { task } = this.props
-
     let taskForm = ''
     if (this.props.processDefinitionId) {
       taskForm = <Taskform/>
@@ -42,7 +49,7 @@ class TasklistPage extends Component {
     }
 
     if (!task) {
-      return (<div>No Pending Applications</div>)
+      return (<div className='fsc-3 fs-3 text-success'>No Pending Applications</div>)
     } else {
       task = sortBy(task, 'id').reverse();
       let counter = 1 // declare a counter variable
@@ -52,7 +59,7 @@ class TasklistPage extends Component {
             <Table.Cell>{counter++}</Table.Cell>  
             <Table.Cell>Land Allotment Process</Table.Cell>
             <Table.Cell>{taskItem.businessKey}</Table.Cell>
-            <Table.Cell>{taskItem.ended===true?"Approved":"Pending"}</Table.Cell>
+            <Table.Cell onClick={this.openModal.bind(this,taskItem.businessKey)}>{taskItem.ended===true?"Approved":"Pending"}</Table.Cell>
           </Table.Row>
         )
       })
@@ -72,7 +79,17 @@ class TasklistPage extends Component {
       {tableRows}
       </Table.Body >
     </Table>
-
+    <Modal show={this.state.isOpen} onHide={this.closeModal} >
+          <Modal.Header closeButton>
+            <Modal.Title>Your Application {this.state.AppId}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body><p>Has been reviewing by the authorities,please give us some time</p></Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.closeModal}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
     </>
       ) 
     }

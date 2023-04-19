@@ -9,7 +9,7 @@ import TasklistPage from './TasklistPage'
 
 let App="A-"
 const num=()=>{
-  const randomnum=Math.floor(Math.random() * 1000) + 1;
+  const randomnum=Math.floor(Math.random() * 1000000) + 1;
   return randomnum
 }
 App=App+num()
