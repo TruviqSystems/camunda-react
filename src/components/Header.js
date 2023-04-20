@@ -3,18 +3,23 @@ import { Link } from 'react-router-dom'
 import logo from './image/react.png'
 import TasklistPage from '../containers/TasklistPage'
 import TablesOfApproved from '../containers/Tables/TablesOfApproved'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 export default class Header extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    
   };
 
   toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });
+
 
   render() {
     const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`;
 
     return (
+      <>
       <header className="header p-5">
           <nav class="navbar navbar-expand-lg bg-body-light bg-transparent border rounded-5">
             <div class="container-fluid">
@@ -46,11 +51,16 @@ export default class Header extends Component {
                   <li class="nav-item">
                     <Link class="nav-link active  text-white" aria-current="page" to="/startprocess/key/LandAllotment_camunda">Apply Now</Link>
                   </li>
+                  <li class="nav-item">
+                    <Link class="nav-link active  text-white" aria-current="page" to="/Login">Login</Link>
+                  </li>
                 </ul>
               </div>
             </div>
           </nav>
       </header>
+      
+      </>
     )
   }
 }

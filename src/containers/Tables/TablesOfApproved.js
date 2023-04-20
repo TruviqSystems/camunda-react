@@ -15,7 +15,7 @@ function TablesOfApproved() {
       console.log("data",data)
       setTables(data)
     })()
-  })
+  },[])
 
   let count=1
 

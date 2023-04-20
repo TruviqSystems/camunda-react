@@ -9,6 +9,7 @@ import TasklistPage from './TasklistPage'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import TablesOfApproved from './Tables/TablesOfApproved'
+import Login from './LoginForm/Login'
 
 import './index.css'
 
@@ -17,6 +18,7 @@ const Root = ({ store }) => (
     <div className='container-fluid background-container'>
       <Header/>
       <Route path="/" component={App} exact/>
+      <Route path="/login" component={Login} exact/>
       <Route path="/startprocess/key/:process" component={StartProcessPage}/>
       <Route path="/startprocess/list" component={StartProcessListPage}/>
       <Route path="/tasklist" component={TasklistPage} exact/>

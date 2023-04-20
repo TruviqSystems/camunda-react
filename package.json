@@ -13,6 +13,7 @@
     "http-proxy-middleware": "^2.0.6",
     "humps": "^2.0.1",
     "lodash": "^4.17.21",
+    "mdb-react-ui-kit": "^6.0.0",
     "normalizr": "^3.6.1",
     "react": "^16.14.0",
     "react-bootstrap": "^2.7.4",
