@@ -6,6 +6,7 @@ import DeployProcess from '../components/DeployProcess'
 import './index.css'
 import logo from './image/logo.png'
 
+
 import Slider from 'react-slick'
 
 import 'slick-carousel/slick/slick.css'
@@ -19,7 +20,7 @@ const settings = {
 
 
 const App = ({actions, children}) => (
-
+  <>
   <div className='main'>
     <Container text className='sub-main border border-dark'>
     <div className="slider-container ">
@@ -69,6 +70,7 @@ const App = ({actions, children}) => (
     <br/>
     
   </div>
+  </>
 )
 
 const mapStateToProps = state => ({

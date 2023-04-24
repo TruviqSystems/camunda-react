@@ -53,3 +53,8 @@ export const postProcessInstance = (processDefinitionKey, values) => ({
   }
 })
 
+export const Autherization = ()=>{
+  return{
+    types:AT.IS_LOGGED_IN
+  }
+}

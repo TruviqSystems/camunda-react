@@ -1,6 +1,7 @@
 import * as ProcessDefinitionActions from './camunda-rest/process-definition'
 import * as TaskActions from './camunda-rest/task'
 import * as DeploymentActions from './camunda-rest/deployment'
+import { IS_LOGGED_IN } from '../constants/ActionTypes'
 
 export const loadTasks = () => (dispatch, getState) => {
   return dispatch(TaskActions.fetchTasks())
@@ -61,3 +62,4 @@ export const fetchData = () => {
       .catch(error => dispatch({ type: FETCH_DATA_FAILURE, payload: error }));
 };
 }
+

@@ -1,6 +1,6 @@
 import React ,{useEffect,useState} from 'react'
 import { useHistory } from 'react-router-dom'
-import {  Checkbox, Form } from 'semantic-ui-react'
+import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 import { Card, Feed } from 'semantic-ui-react'
 
 
@@ -8,9 +8,12 @@ let data = ''
 let usernamesAuthed = []
 let passwordAuthed = []
 
-const Login = () => {
-  const [tables,setTables] = useState([])
+const Login = (props) => {
+  const [open, setOpen] = useState(false)
 
+  const {Authentication}=props
+  const [tables,setTables] = useState([])
+  
   const [username,setUsername] = useState([])
   const [userpassword,setUserpassword] = useState([])
 
@@ -33,15 +36,22 @@ const Login = () => {
     passwordAuthed = tables.map(item=>item.password)
     if(usernamesAuthed.includes(username) && passwordAuthed.includes(userpassword)){
       console.log("Logged in")
-      history.push("/startprocess/key/LandAllotment_camunda");
+      if (window.confirm("You are Logged In")) {
+        Authentication();
+        history.replace("/startprocess/key/LandAllotment_camunda");
+      }
     }
-    else{
-      window.confirm("Wrong Credentials Provided!!!")
-    }
+    else(
+      window.confirm("Wrong Crendetials!!!")
+    )
+    
   }
+
+ 
 
   useEffect(()=>{
     (async ()=>{
+      
        data = await fetch("http://localhost:3001/auths")
       .then(res=>res.json())
       console.log("data",data)

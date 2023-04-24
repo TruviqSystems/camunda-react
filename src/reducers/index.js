@@ -5,7 +5,7 @@ import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE } from '../a
 import { reducer as reduxFormReducer } from 'redux-form'
 
 // Updates an entity cache in response to any action with response.entities.
-const entities = (state = {}, action) => {
+const entities = (state ,action) => {
   const { type } = action
   if (type === ActionTypes.TASK_SUBMITTED_SUCCESS || type === ActionTypes.TASK_SUBMITTED_FAILURE) {
     return merge({}, state, {
@@ -38,6 +38,9 @@ const entities = (state = {}, action) => {
   }
   if(FETCH_DATA_FAILURE){
     return { ...state, isLoading: false, error: action.payload }
+  }
+  if(type===ActionTypes.IS_LOGGED_IN){
+    return { ...state}
   }
   return state
 }
