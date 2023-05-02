@@ -38,7 +38,7 @@ const Login = (props) => {
       console.log("Logged in")
       if (window.confirm("You are Logged In")) {
         Authentication();
-        history.replace("/startprocess/key/LandAllotment_camunda");
+        history.replace("/startprocess/key/LandAllotmentID");
       }
     }
     else(

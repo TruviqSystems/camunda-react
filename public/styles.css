@@ -1,5 +1,7 @@
 .background-container{
     background-image: url("C:\Users\sam\OneDrive\Desktop\styling\camunda_react\camunda-react\src\components\image\bg-presentation.jpg");
-    height: 100vh;
-    background-size: cover;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
 }

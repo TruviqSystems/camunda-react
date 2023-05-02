@@ -26,3 +26,10 @@ app.get("/approved",(req,res)=>{
     })
 
 })
+
+app.get("/auths",(req,res)=>{
+    const dbSel = 'select * from LandAllotment.authorization;'
+    db.query(dbSel,(error,result)=>{
+        res.send(result)
+    })
+})

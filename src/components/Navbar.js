@@ -25,13 +25,13 @@ export default class Navbar extends Component {
     const {isLoggedIn,Authentication} = this.props
     return (
       <>
-      <header className="header p-5">
+      <header className="header p-4">
          {isLoggedIn?
          <><nav class="navbar navbar-expand-lg bg-body-light bg-transparent border rounded-5">
          <div class="container-fluid">
          <img src={logo} alt="" width={100} height={50}/>
          {isLoggedIn?
-           <Link class="navbar-brand text-white" to="/startprocess/key/LandAllotment_camunda" ><h1>Land Allotment</h1></Link>:
+           <Link class="navbar-brand text-white" to="/startprocess/key/LandAllotmentID" ><h1>Land Allotment</h1></Link>:
            <Link class="navbar-brand text-white" to="/" ><h1>Land Allotment</h1></Link>}
            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
              <ul class="navbar-nav">
